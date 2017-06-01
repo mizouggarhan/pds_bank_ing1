@@ -54,16 +54,14 @@ public class AuthorizationConsellor extends AuthorizationState {
                 }
             }
             this.context.sendMessage("sendAllClient");
-            /*this.context.sendMessage(// ici tu dois envoyer le xml generer ... );*/
+         
 
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("Caint access to database");
         }
 
-        // recuperer tous les clients
-        // mettre tous les clients dans un XML/JSON
-        // envoyer le json
+        
         return null;
     }
 
