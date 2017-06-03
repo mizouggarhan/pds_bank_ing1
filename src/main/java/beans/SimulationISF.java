@@ -11,7 +11,7 @@ package beans;
  */
 public class SimulationISF {
 
-    private double valeur_rp, valeur_apb, valeur_dettes, valeur_pme, valeur_don, valeur_assurance, valeur_credit, ISF;
+    private double valeur_rp, valeur_apb, valeur_dettes, valeur_pme, valeur_don, valeur_assurance, valeur_credit;
 
 
     public SimulationISF() {
