@@ -45,6 +45,5 @@
             <type>jar</type>
         </dependency>
     </dependencies>
-    
-    
+    <name>pds_ing1_bank_clone</name>
 </project>

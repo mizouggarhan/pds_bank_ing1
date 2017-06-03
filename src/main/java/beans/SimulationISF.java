@@ -11,24 +11,27 @@ package beans;
  */
 public class SimulationISF {
 
-    private double valeur_rp, valeur_apb, valeur_dettes, valeur_pme, valeur_don;
+    private double valeur_rp, valeur_apb, valeur_dettes, valeur_pme, valeur_don, valeur_assurance, valeur_credit;
 
 
     public SimulationISF() {
     }
 
-    public SimulationISF(double valeur_rp, double valeur_apb, double valeur_dettes, double valeur_pme, double valeur_don) {
+    public SimulationISF(double valeur_rp, double valeur_apb, double valeur_dettes, double valeur_pme, double valeur_don, double valeur_assurance, double valeur_credit) {
         this.valeur_rp = valeur_rp;
         this.valeur_apb = valeur_apb;
         this.valeur_dettes = valeur_dettes;
         this.valeur_pme = valeur_pme;
         this.valeur_don = valeur_don;
+        this.valeur_assurance = valeur_assurance;
+        this.valeur_credit = valeur_credit;
+        
     }
 
     
 
     public double calculatePatrimoineTaxable() {
-        return this.valeur_rp * 0.7 + this.valeur_apb - this.valeur_dettes;
+        return this.valeur_rp * 0.7 + this.valeur_apb + this.valeur_assurance - this.valeur_dettes - this.valeur_credit;
     }
 
     public double getMtTotal() {
@@ -126,7 +129,20 @@ public class SimulationISF {
     public void setValeur_don(double valeur_don) {
         this.valeur_don = valeur_don;
     }
+ public double getValeur_assurance() {
+        return valeur_assurance;
+    }
 
+    public void setValeur_assurance(double valeur_don) {
+        this.valeur_assurance = valeur_don;
+    }
+     public double getValeur_credit() {
+        return valeur_credit;
+    }
+
+    public void setValeur_credit(double valeur_don) {
+        this.valeur_credit = valeur_don;
+    }
     
 }
 

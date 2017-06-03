@@ -52,6 +52,14 @@ public class Formulaire_ISF1 extends JInternalFrame {
         in6 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         in7 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        in8 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        in9 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         inr1 = new javax.swing.JTextField();
@@ -76,7 +84,7 @@ public class Formulaire_ISF1 extends JInternalFrame {
         jLabel2.setText("Valeur de vos autres biens et patrimoines:");
 
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
-        jLabel3.setText("Montant de vos dettes,restant dû, indemnités à déduire:");
+        jLabel3.setText("Autres indemnités à déduire:");
 
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         jLabel5.setText("Total de votre patrimoine taxable:");
@@ -120,6 +128,23 @@ public class Formulaire_ISF1 extends JInternalFrame {
 
         in7.setText("0");
 
+        jLabel8.setText("Assurance vie");
+
+        in8.setText("0");
+        in8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                in8ActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Montant de vos dettes,restant dû");
+
+        in9.setText("0");
+
+        jLabel15.setText("Nom");
+
+        jLabel16.setText("Prénom");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -134,16 +159,24 @@ public class Formulaire_ISF1 extends JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(105, 105, 105)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel3)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(61, 61, 61)
+                                    .addComponent(jLabel15)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel1)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel13))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(in4, javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,28 +184,49 @@ public class Formulaire_ISF1 extends JInternalFrame {
                                     .addComponent(in2, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(in1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(in5)
-                                    .addComponent(in6, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(in6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                                    .addComponent(in8, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(in9, javax.swing.GroupLayout.Alignment.LEADING)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(109, 109, 109)
-                                .addComponent(jLabel7)))))
-                .addContainerGap(121, Short.MAX_VALUE))
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(jLabel7)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel7)
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(in1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(in2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(in3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel2)
+                    .addComponent(in2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(in8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(in9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(in3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -185,7 +239,7 @@ public class Formulaire_ISF1 extends JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(in6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(in7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,7 +325,7 @@ public class Formulaire_ISF1 extends JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -287,7 +341,10 @@ public class Formulaire_ISF1 extends JInternalFrame {
         double in3V = Double.parseDouble(this.in3.getText());
         double in5V = Double.parseDouble(this.in3.getText());
         double in6V = Double.parseDouble(this.in3.getText());
-        double futurin4 =  in1V * 0.7/100 + in2V -  in3V;
+        double in8V = Double.parseDouble(this.in8.getText());
+        double in9V = Double.parseDouble(this.in9.getText());
+        
+        double futurin4 =  in1V * 0.7/100 + in2V + in8V -  in3V - in9V;
         double futurin7 =  futurin4 - (in5V + in6V);
     }
     
@@ -299,6 +356,8 @@ public class Formulaire_ISF1 extends JInternalFrame {
         simulationISF.setValeur_dettes(Double.parseDouble(this.in3.getText()));
         simulationISF.setValeur_pme(Double.parseDouble(this.in5.getText()));
         simulationISF.setValeur_don(Double.parseDouble(this.in6.getText()));
+        simulationISF.setValeur_assurance(Double.parseDouble(this.in8.getText()));
+        simulationISF.setValeur_credit(Double.parseDouble(this.in9.getText()));
         
         this.in4.setText( simulationISF.calculatePatrimoineTaxable() +"");
         this.in7.setText( simulationISF.getMtTotal() +"");
@@ -323,6 +382,10 @@ public class Formulaire_ISF1 extends JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_in1ActionPerformed
 
+    private void in8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_in8ActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -333,6 +396,8 @@ public class Formulaire_ISF1 extends JInternalFrame {
     private javax.swing.JTextField in5;
     private javax.swing.JTextField in6;
     private javax.swing.JTextField in7;
+    private javax.swing.JTextField in8;
+    private javax.swing.JTextField in9;
     private javax.swing.JTextField inr1;
     private javax.swing.JTextField inr2;
     private javax.swing.JTextField inr3;
@@ -343,14 +408,20 @@ public class Formulaire_ISF1 extends JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
 // Total patrimoine = ((n1*0.7%) + n2)) - n3

@@ -86,12 +86,15 @@ public class HandleClient extends Thread {
                             String IFSSim = this.readLine();
                             mapper = new ObjectMapper();
                             SimulationISF simulationISF = mapper.readValue(IFSSim, SimulationISF.class);
-                            PreparedStatement ps = this.connection.prepareStatement("INSERT INTO SIMULATION_IDS (valeur_rp, valeur_apb, valeur_dettes, valeur_pme, valeur_don) VALUES (?, ?, ?, ?, ?)");
+                            PreparedStatement ps = this.connection.prepareStatement("INSERT INTO SIMULATION_IDS (valeur_rp, valeur_apb, valeur_dettes, valeur_pme, valeur_don, valeur_assurance, valeur_credit) VALUES (?, ?, ?, ?, ?, ?, ?)");
                             ps.setDouble(1, simulationISF.getValeur_rp());
                             ps.setDouble(2, simulationISF.getValeur_apb());
                             ps.setDouble(3, simulationISF.getValeur_dettes());
                             ps.setDouble(4, simulationISF.getValeur_pme());
                             ps.setDouble(5, simulationISF.getValeur_don());
+                            ps.setDouble(6, simulationISF.getValeur_assurance());
+                            ps.setDouble(7, simulationISF.getValeur_credit());
+                     
                             ps.execute();
                             break;
                             
