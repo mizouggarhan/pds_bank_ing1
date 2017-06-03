@@ -94,6 +94,7 @@ public class HandleClient extends Thread {
                             ps.setDouble(5, simulationISF.getValeur_don());
                             ps.setDouble(6, simulationISF.getValeur_assurance());
                             ps.setDouble(7, simulationISF.getValeur_credit());
+                            
                      
                             ps.execute();
                             break;

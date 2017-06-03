@@ -11,7 +11,7 @@ package beans;
  */
 public class SimulationISF {
 
-    private double valeur_rp, valeur_apb, valeur_dettes, valeur_pme, valeur_don, valeur_assurance, valeur_credit;
+    private double valeur_rp, valeur_apb, valeur_dettes, valeur_pme, valeur_don, valeur_assurance, valeur_credit, ISF;
 
 
     public SimulationISF() {
@@ -25,6 +25,9 @@ public class SimulationISF {
         this.valeur_don = valeur_don;
         this.valeur_assurance = valeur_assurance;
         this.valeur_credit = valeur_credit;
+       
+        
+        
         
     }
 
@@ -89,7 +92,7 @@ public class SimulationISF {
             return 51810;
         }
     }
-
+    
     public double getValeur_rp() {
         return valeur_rp;
     }
@@ -133,15 +136,15 @@ public class SimulationISF {
         return valeur_assurance;
     }
 
-    public void setValeur_assurance(double valeur_don) {
-        this.valeur_assurance = valeur_don;
+    public void setValeur_assurance(double valeur_assurance) {
+        this.valeur_assurance = valeur_assurance;
     }
      public double getValeur_credit() {
         return valeur_credit;
     }
 
-    public void setValeur_credit(double valeur_don) {
-        this.valeur_credit = valeur_don;
+    public void setValeur_credit(double valeur_credit) {
+        this.valeur_credit = valeur_credit;
     }
     
 }
