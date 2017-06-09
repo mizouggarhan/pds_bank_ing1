@@ -54,7 +54,7 @@
         <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Identifiant&quot;, &quot;Nom&quot;, &quot;Prenom&quot;, &quot;Adresse&quot;&#xa;    }&#xa;)" type="code"/>
+              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Identifiant&quot;, &quot;Nom&quot;, &quot;Prenom&quot;, &quot;Adresse&quot;, &quot;Type d&apos;assurance&quot;, &quot;Montant d&#xfb;&quot;&#xa;    }&#xa;)" type="code"/>
             </Property>
           </Properties>
         </Component>

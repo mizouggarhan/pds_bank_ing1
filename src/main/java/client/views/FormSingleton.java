@@ -7,6 +7,7 @@
  */
 package client.views;
 
+import beans.Customer;
 import client.Client;
 
 /**
@@ -72,9 +73,9 @@ public class FormSingleton {
      * 
      */
     
-    public static Formulaire_ISF1 getListISF1Form(Client client){
+    public static Formulaire_ISF1 getListISF1Form(Client client, Customer customer){
         if(formulaire_ISF1 == null)
-            formulaire_ISF1 = new Formulaire_ISF1(client);
+            formulaire_ISF1 = new Formulaire_ISF1(client, customer);
         return formulaire_ISF1;
     }
     
@@ -88,6 +89,8 @@ public class FormSingleton {
     public static boolean ifInstanciedListISF1Form(){
         return formulaire_ISF1 == null;
     }
+
+    
     
     
 }

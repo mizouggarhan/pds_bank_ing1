@@ -5,6 +5,7 @@
  */
 package client.views;
 
+import beans.Assurance;
 import beans.Customer;
 import client.Client;
 import java.util.logging.Level;
@@ -35,10 +36,12 @@ public class FormListClients extends javax.swing.JInternalFrame {
             }
         }
 
-        String[] entetes = {"Prénom", "Nom", "Sexe", "Date naissance", "Adresse", "Code postale", "Salaire"};
-        Object[][] donnees = new Object[this.client.getCustomers().length][7];
+        String[] entetes = {"Prénom", "Nom", "Sexe", "Date naissance", "Adresse", "Code postale", "Salaire", "Type d'assurance", "Montant"};
+        Object[][] donnees = new Object[this.client.getCustomers().length][9];
 
         for (int i = 0; i < this.client.getCustomers().length; i++) {
+            Assurance s = this.client.getCustomers()[i].getAssurance();
+            
             donnees[i][0] = this.client.getCustomers()[i].getPrenom();
             donnees[i][1] = this.client.getCustomers()[i].getNom();
             donnees[i][2] = this.client.getCustomers()[i].getSexe();
@@ -46,6 +49,8 @@ public class FormListClients extends javax.swing.JInternalFrame {
             donnees[i][4] = this.client.getCustomers()[i].getAdresse();
             donnees[i][5] = this.client.getCustomers()[i].getCodePostale();
             donnees[i][6] = this.client.getCustomers()[i].getSalaire();
+            donnees[i][7] = s == null ? "NONE" : s.getType();
+            donnees[i][8] = s == null ? "NONE" : s.getMontant();
         }
 
         tableModel = new DefaultTableModel(donnees, entetes);
@@ -113,7 +118,7 @@ public class FormListClients extends javax.swing.JInternalFrame {
         if (rowIndex == -1) {
             JOptionPane.showMessageDialog(this, "You have select one row before click on the button");
         }else{
-            Formulaire_ISF1 formulaire_ISF1 = FormSingleton.getListISF1Form(client);
+            Formulaire_ISF1 formulaire_ISF1 = FormSingleton.getListISF1Form(client, this.client.getCustomers()[rowIndex]);
             formulaire_ISF1.setVisible(true);
             this.client.getForm().getDesktopPane().add(formulaire_ISF1);
         }

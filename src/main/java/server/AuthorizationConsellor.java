@@ -5,6 +5,8 @@
  */
 package server;
 
+import beans.Assurance;
+import beans.Credit;
 import beans.Customer;
 import beans.User;
 import java.sql.Connection;
@@ -27,7 +29,7 @@ import server.database.Database;
  */
 public class AuthorizationConsellor extends AuthorizationState {
 
-    public AuthorizationConsellor(HandleClient context) {
+    public AuthorizationConsellor(HandleClient context, User user) {
         super(context);
         System.out.println("Concidered As Counsellor");
     }
@@ -76,9 +78,17 @@ public class AuthorizationConsellor extends AuthorizationState {
         try {
             String query = "SELECT  * FROM CLIENT_BANK";
             ResultSet rs = this.context.connection.createStatement().executeQuery(query);
+            
+            PreparedStatement st =  this.context.connection.prepareStatement("SELECT * FROM assurance where idassurance = ?");
+            PreparedStatement stC =  this.context.connection.prepareStatement("SELECT * FROM credit where idclient = ?");
+            
+            
             List<Customer> customers = new ArrayList<>();
             while(rs.next()){
+                Credit credit = null;
+                Assurance assurance = null;
                 Customer c = new Customer();
+                
                 c.setIdClient(rs.getInt("idclient"));
                 c.setCodePostale(rs.getInt("codepostale"));
                 c.setNom(rs.getString("nom"));
@@ -87,6 +97,30 @@ public class AuthorizationConsellor extends AuthorizationState {
                 c.setAdresse(rs.getString("adresse"));
                 c.setSalaire(rs.getInt("salaire"));
                 c.setSexe(rs.getString("sexe"));
+                int jointureAssurance = rs.getInt("id_assurance");
+                st.setInt(1, jointureAssurance);
+                ResultSet rsAs = st.executeQuery();
+                if(rsAs.next()){
+                    assurance = new Assurance();
+                    assurance.setMontant(rsAs.getDouble("montant"));
+                    assurance.setIdAssurance(rsAs.getInt("idassurance"));
+                    assurance.setDateCreation(rsAs.getTimestamp("datecreation"));
+                    assurance.setType(rsAs.getString("type"));
+                    assurance.setLibelle(rsAs.getString("libelle"));
+                }
+                
+                stC.setInt(1, c.getIdClient());
+                ResultSet rsC = stC.executeQuery();
+                if(rsC.next()){
+                    credit = new Credit();
+                    credit.setIdCredit(rsC.getInt("idcredit"));
+                    credit.setMensualite(rsC.getDouble("mensualite"));
+                    credit.setMtrestant(rsC.getDouble("mtrestant"));
+                    credit.setMttotal(rsC.getDouble("mttotal"));
+                }
+                
+                c.setCredit(credit);
+                c.setAssurance(assurance);
                 customers.add(c);
             }
             return customers;

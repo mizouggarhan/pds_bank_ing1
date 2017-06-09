@@ -129,6 +129,7 @@ public class MDIForm extends javax.swing.JFrame {
 
     
     public void setMenuConsulor(){
+        this.menuBar.remove(0);
         JMenu menu = new JMenu("Conselor");
         JMenuItem menuItemListClients = new JMenuItem("Lister les clients");
         menuItemListClients.addActionListener(new ActionListener() {

@@ -17,18 +17,18 @@ import java.util.logging.Logger;
 public class Database {
 
     
+    public static String composant = "mysql";
+    public static String nameDB = "pds_ing1";
+    public static String driver = "com.mysql.jdbc.Driver";
+    public static String host = "localhost";
+    public static int port = 3306;
 
-    private static String nameDB = "pds_ing1";
-    private static String driver = "com.mysql.jdbc.Driver";
-    private static String host = "localhost";
-    private static int port = 3306;
-
-    private static String url = "jdbc:mysql://" + host + ":" + port + "/" + nameDB;
-    private static String login = "root";
-    private static String password = "";
+    private static String url = "jdbc:"+composant+"://" + host + ":" + port + "/" + nameDB;
+    public static String login = "root";
+    public static String password = "";
     
     private static BlockingQueue<Connection> queue;
-    private static int LENGTH_QUEUE = 10;
+    private static int LENGTH_QUEUE = 20;
 
     static {
         try {

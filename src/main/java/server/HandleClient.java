@@ -132,7 +132,7 @@ public class HandleClient extends Thread {
             System.out.println("[R] : " + message);
             return message;
         } catch (IOException ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
             return null;
         }
     }

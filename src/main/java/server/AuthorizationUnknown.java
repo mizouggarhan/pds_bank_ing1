@@ -7,8 +7,13 @@ package server;
 
 import beans.Customer;
 import beans.User;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,21 +28,30 @@ public class AuthorizationUnknown extends AuthorizationState {
 
     @Override
     public User login(String login, String password) {
-        // access à la BD
-        // user exist in database
-        if(login.trim().equalsIgnoreCase("mouna") && password.trim().equalsIgnoreCase("123456")){
-            this.context.sendMessage("authentificationAuthorized");
-            this.context.setAuthorizationState(new AuthorizationConsellor(context));
-            return new User();
-            
-        }else{
+        try {
+            // access à la BD
+            // user exist in database
+            PreparedStatement ps = this.context.connection.prepareStatement("SELECT * FROM account where ndc=? and psw=?");
+            ps.setString(1, login);
+            ps.setString(2, password);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                User user = new User();
+                this.context.sendMessage("authentificationAuthorized");
+                this.context.setAuthorizationState(new AuthorizationConsellor(context, user));
+                System.out.println("User found");
+                return user;
+            } else {
+                throw new Exception("no user found");
+            }
+        } catch (Exception ex) {
             this.context.sendMessage("authentificationRefused");
             return null;
         }
     }
 
-    
-    
     @Override
     public List<User> getAllUsers() {
         this.context.sendMessage("permissionDenied");
@@ -49,5 +63,5 @@ public class AuthorizationUnknown extends AuthorizationState {
         this.context.sendMessage("permissionDenied");
         return null;
     }
-    
+
 }

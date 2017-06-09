@@ -19,6 +19,10 @@ public class Customer {
             
     private Timestamp dateNaissance;
 
+    private Assurance assurance;
+    private Credit credit;
+    
+    
     public Customer() {
     }
 
@@ -98,6 +102,26 @@ public class Customer {
         this.dateNaissance = dateNaissance;
     }
 
+    public Assurance getAssurance() {
+        return assurance;
+    }
+
+    public void setAssurance(Assurance assurance) {
+        this.assurance = assurance;
+    }
+
+    public Credit getCredit() {
+        return credit;
+    }
+
+    public void setCredit(Credit credit) {
+        this.credit = credit;
+    }
+
+    
+    
+    
+    
     @Override
     public String toString() {
         return "Customer{" + "idClient=" + idClient + ", codePostale=" + codePostale + ", salaire=" + salaire + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", sexe=" + sexe + ", dateNaissance=" + dateNaissance + '}';

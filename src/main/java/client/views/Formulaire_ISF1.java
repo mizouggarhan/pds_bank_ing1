@@ -5,13 +5,17 @@
  */
 package client.views;
 
+import beans.Customer;
 import beans.SimulationISF;
 import client.Client;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
 
 /**
  *
@@ -20,10 +24,26 @@ import javax.swing.JOptionPane;
 public class Formulaire_ISF1 extends JInternalFrame {
 
     private Client client;
+    private Customer customer;
 
-    Formulaire_ISF1(Client client) {
+    Formulaire_ISF1(Client client, Customer customer) {
         initComponents();
         this.client = client;
+        this.customer = customer;
+        this.addInternalFrameListener(new InternalFrameAdapter() {
+            public void internalFrameClosing(InternalFrameEvent e) {
+                FormSingleton.disposeListISF1Form();
+            }
+        });
+        this.setClosable(true);
+        this.inom.setText(this.customer.getNom());
+        this.iprenom.setText(this.customer.getPrenom());
+        if (this.customer.getAssurance() != null) {
+            in8.setText(this.customer.getAssurance().getMontant() + "");
+        }
+        this.inom.setEnabled(false);
+        this.iprenom.setEnabled(false);
+        this.in4.setEnabled(false);
     }
 
     /**
@@ -57,9 +77,9 @@ public class Formulaire_ISF1 extends JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         in9 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        inom = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        iprenom = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         inr1 = new javax.swing.JTextField();
@@ -227,7 +247,7 @@ public class Formulaire_ISF1 extends JInternalFrame {
                                     .addGap(61, 61, 61)
                                     .addComponent(jLabel15)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(inom, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel1)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -245,7 +265,7 @@ public class Formulaire_ISF1 extends JInternalFrame {
                                 .addGap(17, 17, 17)
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))))
+                                .addComponent(iprenom, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(119, 119, 119)
                         .addComponent(jLabel7))
@@ -265,9 +285,9 @@ public class Formulaire_ISF1 extends JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iprenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -335,7 +355,7 @@ public class Formulaire_ISF1 extends JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_in4ActionPerformed
 
-    public void calculev7(){
+    public void calculev7() {
         double in1V = Double.parseDouble(this.in1.getText());
         double in2V = Double.parseDouble(this.in2.getText());
         double in3V = Double.parseDouble(this.in3.getText());
@@ -343,38 +363,38 @@ public class Formulaire_ISF1 extends JInternalFrame {
         double in6V = Double.parseDouble(this.in3.getText());
         double in8V = Double.parseDouble(this.in8.getText());
         double in9V = Double.parseDouble(this.in9.getText());
-        
-        double futurin4 =  in1V * 0.7/100 + in2V + in8V -  in3V - in9V;
-        double futurin7 =  futurin4 - (in5V + in6V);
+
+        double futurin4 = in1V * 0.7 / 100 + in2V + in8V - in3V - in9V;
+        double futurin7 = futurin4 - (in5V + in6V);
     }
-    
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         SimulationISF simulationISF = new SimulationISF();
-        
-        simulationISF.setValeur_rp(Double.parseDouble(this.in1.getText()));
-        simulationISF.setValeur_apb(Double.parseDouble(this.in2.getText()));
-        simulationISF.setValeur_dettes(Double.parseDouble(this.in3.getText()));
-        simulationISF.setValeur_pme(Double.parseDouble(this.in5.getText()));
-        simulationISF.setValeur_don(Double.parseDouble(this.in6.getText()));
-        simulationISF.setValeur_assurance(Double.parseDouble(this.in8.getText()));
-        simulationISF.setValeur_credit(Double.parseDouble(this.in9.getText()));
-        
-        this.in4.setText( simulationISF.calculatePatrimoineTaxable() +"");
-        this.in7.setText( simulationISF.getMtTotal() +"");
-        
-        if(simulationISF.shouldBeImposable()){
-            JOptionPane.showMessageDialog(this, "Le total de votre patrimoine est inférieur à 1.3M, vous n'étes pas imposable.");
-            
-        }else{
-            this.inr1.setText( simulationISF.getISF() + "" );
-            this.inr2.setText(simulationISF.getTauxTaxable()+ "");
-            this.inr3.setText(simulationISF.getMtDeductible()+ "");
-        }
-        
+
         try {
+            simulationISF.setValeur_rp(Double.parseDouble(this.in1.getText()));
+            simulationISF.setValeur_apb(Double.parseDouble(this.in2.getText()));
+            simulationISF.setValeur_dettes(Double.parseDouble(this.in3.getText()));
+            simulationISF.setValeur_pme(Double.parseDouble(this.in5.getText()));
+            simulationISF.setValeur_don(Double.parseDouble(this.in6.getText()));
+            simulationISF.setValeur_assurance(Double.parseDouble(this.in8.getText()));
+            simulationISF.setValeur_credit(Double.parseDouble(this.in9.getText()));
+            DecimalFormat df = new DecimalFormat("#.00");
+
+            this.in4.setText(df.format(simulationISF.calculatePatrimoineTaxable()) + "");
+            this.in7.setText(df.format(simulationISF.getMtTotal()) + "");
+
+            if (simulationISF.shouldBeImposable()) {
+                JOptionPane.showMessageDialog(this, "Le total de votre patrimoine est inférieur à 1.3M, vous n'étes pas imposable.");
+
+            } else {
+                this.inr1.setText(df.format(simulationISF.getISF()) + "");
+                this.inr2.setText(df.format(simulationISF.getTauxTaxable()) + "");
+                this.inr3.setText(df.format(simulationISF.getMtDeductible()) + "");
+            }
             this.client.sendSimulationISF(simulationISF);
-        } catch (JsonProcessingException ex) {
-            Logger.getLogger(Formulaire_ISF1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Veuillez saisir un montant valable, les chaîne de caractères ne sont pas acceptées");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -386,7 +406,6 @@ public class Formulaire_ISF1 extends JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_in8ActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField in1;
@@ -398,9 +417,11 @@ public class Formulaire_ISF1 extends JInternalFrame {
     private javax.swing.JTextField in7;
     private javax.swing.JTextField in8;
     private javax.swing.JTextField in9;
+    private javax.swing.JTextField inom;
     private javax.swing.JTextField inr1;
     private javax.swing.JTextField inr2;
     private javax.swing.JTextField inr3;
+    private javax.swing.JTextField iprenom;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -420,27 +441,24 @@ public class Formulaire_ISF1 extends JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
 // Total patrimoine = ((n1*0.7%) + n2)) - n3
 // Montant estimé = if T <= 1.3M => (Msg : Le total de votre patrimoine est inférieur à 1.3M, vous n'êtes pas imposable)
-                    //if T>1.3M =>
-                        //if T >1.3M et T<=2570000 => R = (T*0.007) - 6600
-                        // if T>2570000 et T<5000000 => R = (T*0.01)-14310
-                        // if T>5M et T<10M => R = (T*0.0125) - 26810
-                        // if T>10000 => R = (T*0.015)-51810
+//if T>1.3M =>
+//if T >1.3M et T<=2570000 => R = (T*0.007) - 6600
+// if T>2570000 et T<5000000 => R = (T*0.01)-14310
+// if T>5M et T<10M => R = (T*0.0125) - 26810
+// if T>10000 => R = (T*0.015)-51810
 // Montant déductible = 
-            ///if T >1.3M et T<=2570000 => Montant = 6600
-            // if T>2570000 et T<5000000 => Montant = 14310
-            // if T>5M et T<10M => Montant = 26810
-            // if T>10000 => Montant = 51810
+///if T >1.3M et T<=2570000 => Montant = 6600
+// if T>2570000 et T<5000000 => Montant = 14310
+// if T>5M et T<10M => Montant = 26810
+// if T>10000 => Montant = 51810
 
 //Taux applicable
-
-             ///if T >1.3M et T<=2570000 => Taux = 0.7%
-            // if T>2570000 et T<5000000 => Taux = 1%
-            // if T>5M et T<10M => taux = 1.25%
-            // if T>10000 => taux = 1.5%
+///if T >1.3M et T<=2570000 => Taux = 0.7%
+// if T>2570000 et T<5000000 => Taux = 1%
+// if T>5M et T<10M => taux = 1.25%
+// if T>10000 => taux = 1.5%
 

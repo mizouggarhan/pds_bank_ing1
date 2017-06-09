@@ -39,7 +39,7 @@ public class ListAllCustomers extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Identifiant", "Nom", "Prenom", "Adresse"
+                "Identifiant", "Nom", "Prenom", "Adresse", "Type d'assurance", "Montant dû"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
