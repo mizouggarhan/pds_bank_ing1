@@ -76,7 +76,7 @@ public class AuthorizationConsellor extends AuthorizationState {
     @Override
     public List<Customer> getAllClients() {
         try {
-            String query = "SELECT  * FROM CLIENT_BANK";
+            String query = "SELECT  * FROM client_bank";
             ResultSet rs = this.context.connection.createStatement().executeQuery(query);
             
             PreparedStatement st =  this.context.connection.prepareStatement("SELECT * FROM assurance where idassurance = ?");
