@@ -40,6 +40,7 @@ public class Formulaire_ISF1 extends JInternalFrame {
         this.iprenom.setText(this.customer.getPrenom());
         if (this.customer.getAssurance() != null) {
             in8.setText(this.customer.getAssurance().getMontant() + "");
+            in9.setText(this.customer.getCredit().getMttotal()+ "");
         }
         this.inom.setEnabled(false);
         this.iprenom.setEnabled(false);
@@ -162,6 +163,12 @@ public class Formulaire_ISF1 extends JInternalFrame {
         in9.setText("0");
 
         jLabel15.setText("Nom");
+
+        inom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inomActionPerformed(evt);
+            }
+        });
 
         jLabel16.setText("Prénom");
 
@@ -405,6 +412,10 @@ public class Formulaire_ISF1 extends JInternalFrame {
     private void in8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_in8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_in8ActionPerformed
+
+    private void inomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inomActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
