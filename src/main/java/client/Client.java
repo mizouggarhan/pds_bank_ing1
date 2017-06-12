@@ -56,6 +56,7 @@ public class Client extends Thread {
             this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             this.running = true;
         } catch (Exception e) {
+            e.printStackTrace();
             this.running = false;
         }
         super.start();
