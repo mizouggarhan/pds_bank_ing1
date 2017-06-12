@@ -34,6 +34,7 @@ public class Database {
         try {
             Class.forName(driver);
             queue = new ArrayBlockingQueue(LENGTH_QUEUE);
+            System.out.println(url);
             for (int i = 0; i < LENGTH_QUEUE; i++) {
                 queue.add(DriverManager.getConnection(url, login, password));
             }
