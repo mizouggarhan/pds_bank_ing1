@@ -51,6 +51,7 @@ public class Client extends Thread {
     @Override
     public synchronized void start() {
         try {
+            System.out.println("HOST ["+host+"] PORT ["+port+"]");
             this.socket = new Socket(host, port);
             this.out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
             this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
