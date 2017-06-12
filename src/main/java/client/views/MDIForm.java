@@ -25,7 +25,7 @@ public class MDIForm extends javax.swing.JFrame {
     
     public MDIForm() {
         initComponents();
-        this.client = new Client(8890, "127.0.0.1", this);
+        this.client = new Client(this);
         client.start();
     }
 
