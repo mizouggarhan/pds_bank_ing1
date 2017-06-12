@@ -42,9 +42,7 @@ public class Client extends Thread {
     
     protected Customer[] customers;
 
-    public Client(int port, String host, MDIForm form) {
-        this.port = port;
-        this.host = host;
+    public Client(MDIForm form) {
         this.form = form;
     }
 
