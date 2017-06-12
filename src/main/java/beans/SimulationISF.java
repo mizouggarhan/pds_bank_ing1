@@ -34,11 +34,11 @@ public class SimulationISF {
     
 
     public double calculatePatrimoineTaxable() {
-        return this.valeur_rp * 0.7 + this.valeur_apb + this.valeur_assurance - this.valeur_dettes - this.valeur_credit;
+        return this.valeur_rp * 0.7 + this.valeur_apb + this.valeur_assurance - this.valeur_dettes - this.valeur_credit - (this.valeur_don*0.5) - (this.valeur_pme*0.5);
     }
 
     public double getMtTotal() {
-        return this.calculatePatrimoineTaxable() - this.valeur_pme - this.valeur_don;
+        return this.calculatePatrimoineTaxable() - (this.valeur_pme*0.5) - (this.valeur_don*0.5);
     }
 
     public boolean shouldBeImposable() {
@@ -46,30 +46,31 @@ public class SimulationISF {
     }
 
     public double getISF() {
-        double futurin4 = calculatePatrimoineTaxable();
-        if (futurin4 >= 1300000 && futurin4 < 2570000) {
-            return futurin4 * 0.7 / 100 - 6600 - this.valeur_pme - this.valeur_don;
+        double futurin7 = calculatePatrimoineTaxable();
+        
+          if (futurin7 >= 1300000 && futurin7 < 2570000) {
+            return (futurin7 * 0.7 / 100) - 6600 ;
 
-        } else if (futurin4 >= 2570000 && futurin4 < 5000000) {
-            return futurin4 * 0.01 - 14310 - this.valeur_pme - this.valeur_don;
+        } else if (futurin7 >= 2570000 && futurin7 < 5000000) {
+            return (futurin7 * 0.01) - 14310 ;
 
-        } else if (futurin4 >= 5000000 && futurin4 < 10000000) {
-            return futurin4 * 0.0125 - 26810 - this.valeur_pme - this.valeur_don;
+        } else if (futurin7 >= 5000000 && futurin7 < 10000000) {
+            return (futurin7 * 0.0125) - 26810 ;
 
         } else {
-            return futurin4 * 0.015 - 51810 - this.valeur_pme - this.valeur_don;
+            return (futurin7 * 0.015) - 51810 ;
         }
     }
 
     public double getTauxTaxable() {
-        double futurin4 = calculatePatrimoineTaxable();
-        if (futurin4 >= 1300000 && futurin4 < 2570000) {
+        double futurin7 = calculatePatrimoineTaxable();
+        if (futurin7 >= 1300000 && futurin7 < 2570000) {
             return 0.7;
 
-        } else if (futurin4 >= 2570000 && futurin4 < 5000000) {
+        } else if (futurin7 >= 2570000 && futurin7 < 5000000) {
             return 1;
 
-        } else if (futurin4 >= 5000000 && futurin4 < 10000000) {
+        } else if (futurin7 >= 5000000 && futurin7 < 10000000) {
             return 1.25;
 
         } else {
@@ -78,14 +79,14 @@ public class SimulationISF {
     }
 
     public double getMtDeductible() {
-        double futurin4 = calculatePatrimoineTaxable();
-        if (futurin4 >= 1300000 && futurin4 < 2570000) {
+        double futurin7 = calculatePatrimoineTaxable();
+        if (futurin7 >= 1300000 && futurin7 < 2570000) {
             return 6600;
 
-        } else if (futurin4 >= 2570000 && futurin4 < 5000000) {
+        } else if (futurin7 >= 2570000 && futurin7 < 5000000) {
             return 14310;
 
-        } else if (futurin4 >= 5000000 && futurin4 < 10000000) {
+        } else if (futurin7 >= 5000000 && futurin7 < 10000000) {
             return 26810;
 
         } else {

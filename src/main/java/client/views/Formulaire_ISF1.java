@@ -40,7 +40,7 @@ public class Formulaire_ISF1 extends JInternalFrame {
         this.iprenom.setText(this.customer.getPrenom());
         if (this.customer.getAssurance() != null) {
             in8.setText(this.customer.getAssurance().getMontant() + "");
-            in9.setText(this.customer.getCredit().getMttotal()+ "");
+            in9.setText(this.customer.getCredit().getMttotal() + "");
         }
         this.inom.setEnabled(false);
         this.iprenom.setEnabled(false);
@@ -371,7 +371,7 @@ public class Formulaire_ISF1 extends JInternalFrame {
         double in8V = Double.parseDouble(this.in8.getText());
         double in9V = Double.parseDouble(this.in9.getText());
 
-        double futurin4 = in1V * 0.7 / 100 + in2V + in8V - in3V - in9V;
+        double futurin4 = in1V * 0.7 / 100 + (in2V + in8V) - (in3V + in9V);
         double futurin7 = futurin4 - (in5V + in6V);
     }
 
@@ -388,16 +388,20 @@ public class Formulaire_ISF1 extends JInternalFrame {
             simulationISF.setValeur_credit(Double.parseDouble(this.in9.getText()));
             DecimalFormat df = new DecimalFormat("#.00");
 
-            this.in4.setText(df.format(simulationISF.calculatePatrimoineTaxable()) + "");
-            this.in7.setText(df.format(simulationISF.getMtTotal()) + "");
-
             if (simulationISF.shouldBeImposable()) {
                 JOptionPane.showMessageDialog(this, "Le total de votre patrimoine est inférieur à 1.3M, vous n'étes pas imposable.");
+                this.inr1.setText("0");
+                this.inr2.setText("0");
+                this.inr3.setText("0");
+                this.in7.setText("0");
+                this.in4.setText("0");
 
             } else {
                 this.inr1.setText(df.format(simulationISF.getISF()) + "");
                 this.inr2.setText(df.format(simulationISF.getTauxTaxable()) + "");
                 this.inr3.setText(df.format(simulationISF.getMtDeductible()) + "");
+                this.in4.setText(df.format(simulationISF.calculatePatrimoineTaxable()) + "");
+                this.in7.setText(df.format(simulationISF.getMtTotal()) + "");
             }
             this.client.sendSimulationISF(simulationISF);
         } catch (Exception ex) {
