@@ -31,6 +31,8 @@ public class Application {
                     break;
 
                 case "client":
+                    client.Client.host = args[1];
+                    client.Client.port = Integer.parseInt(args[2]);
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
                             new MDIForm().setVisible(true);

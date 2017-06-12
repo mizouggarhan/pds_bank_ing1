@@ -30,8 +30,8 @@ import javax.swing.JOptionPane;
  */
 public class Client extends Thread {
 
-    private int port;
-    private String host;
+    public static int port;
+    public static String host;
 
     protected boolean running;
     protected Socket socket;
