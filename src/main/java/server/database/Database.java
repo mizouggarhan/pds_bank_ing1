@@ -32,6 +32,7 @@ public class Database {
 
     public static void initPool(){
         try {
+            url = "jdbc:"+composant+"://" + host + ":" + port + "/" + nameDB;
             Class.forName(driver);
             queue = new ArrayBlockingQueue(LENGTH_QUEUE);
             System.out.println(url);
