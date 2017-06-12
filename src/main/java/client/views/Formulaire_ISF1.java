@@ -27,24 +27,27 @@ public class Formulaire_ISF1 extends JInternalFrame {
     private Customer customer;
 
     Formulaire_ISF1(Client client, Customer customer) {
-        initComponents();
-        this.client = client;
-        this.customer = customer;
-        this.addInternalFrameListener(new InternalFrameAdapter() {
-            public void internalFrameClosing(InternalFrameEvent e) {
-                FormSingleton.disposeListISF1Form();
+        try {
+            initComponents();
+            this.client = client;
+            this.customer = customer;
+            this.addInternalFrameListener(new InternalFrameAdapter() {
+                public void internalFrameClosing(InternalFrameEvent e) {
+                    FormSingleton.disposeListISF1Form();
+                }
+            });
+            this.setClosable(true);
+            this.inom.setText(this.customer.getNom());
+            this.iprenom.setText(this.customer.getPrenom());
+            if (this.customer.getAssurance() != null) {
+                in8.setText(this.customer.getAssurance().getMontant() + "");
+                in9.setText(this.customer.getCredit().getMttotal() + "");
             }
-        });
-        this.setClosable(true);
-        this.inom.setText(this.customer.getNom());
-        this.iprenom.setText(this.customer.getPrenom());
-        if (this.customer.getAssurance() != null) {
-            in8.setText(this.customer.getAssurance().getMontant() + "");
-            in9.setText(this.customer.getCredit().getMttotal() + "");
+            this.inom.setEnabled(false);
+            this.iprenom.setEnabled(false);
+            this.in4.setEnabled(false);
+        } catch (Exception e) {
         }
-        this.inom.setEnabled(false);
-        this.iprenom.setEnabled(false);
-        this.in4.setEnabled(false);
     }
 
     /**
