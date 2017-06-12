@@ -26,6 +26,7 @@ public class Application {
                     Database.port = Integer.parseInt(args[5]);
                     Database.login = args[6];
                     Database.password = args[7];
+                    Database.initPool();
                     Server server = new Server();
                     server.start();
                     break;

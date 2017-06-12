@@ -30,7 +30,7 @@ public class Database {
     private static BlockingQueue<Connection> queue;
     private static int LENGTH_QUEUE = 20;
 
-    static {
+    public static void initPool(){
         try {
             Class.forName(driver);
             queue = new ArrayBlockingQueue(LENGTH_QUEUE);
