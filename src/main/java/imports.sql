@@ -8,6 +8,11 @@
  * Created: 9 juin 2017
  */
 
+DROP TABLE `account`;
+DROP TABLE `assurance`;
+DROP TABLE `client_bank`;
+DROP TABLE `credit`;
+DROP TABLE `simulation_ids`;
 
 CREATE TABLE `account` (
   `id_account` int(11) NOT NULL,
